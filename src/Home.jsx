@@ -1,4 +1,3 @@
-import { useState,useEffect} from "react"
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -15,18 +14,16 @@ function Home() {
     navigate("/create");
   };
 
-          const handleViewPerson = () => {
-            navigate("/view");
-              };
-
-  
+  const handleViewPerson = (person) => {
+    navigate("/view", { state: person });
+  };
 
   return (
     <div>
       <h1>Home</h1>
       <button onClick={handleAddPerson}>Add Person</button>
       <h2>Persons</h2>
-        {details.length > 0 ? (
+      {details.length > 0 ? (
         details.map((detail, index) => (
           <div key={index}>
             <p>

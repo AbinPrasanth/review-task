@@ -1,20 +1,20 @@
 import {useState} from "react"
 import {useNavigate} from "react-router-dom"
 
-function form () {
-    const [name,setName] = useState['']
-    const [batch,setBatch] = useState['']
+function Create () {
+    const [name,setName] = useState('')
+    const [batch,setBatch] = useState('')
 
     const navigate = useNavigate()
 
     const handleSubmit = (e) =>{
         e.preventDefault()
 
-        const dataForm = {name,batch}
+        const dataForm = {name,batch};
 
-         NameBatch.push(dataForm)
-         localStorage.setItem("NameBatch",JSON.stringify(dataForm))
-         storedData=JSON.parse(localStorage.getItem("NameBatch"))
+        const storedData=JSON.parse(localStorage.getItem("NameBatch")) || [];
+        storedData.push(dataForm)
+        localStorage.setItem("NameBatch",JSON.stringify(storedData))
 
 
          navigate("/")
@@ -50,9 +50,5 @@ function form () {
               </form>
             </div>
           );
-    
-
-
-
-
 }
+export default Create
